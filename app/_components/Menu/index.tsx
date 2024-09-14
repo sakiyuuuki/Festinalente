@@ -15,32 +15,32 @@ export default function Menu() {
             </Link>
           </li>
           <li className={styles.li}>
-            <Link href="/introduction">
+            <Link href="/Introduction">
               <span className={styles.global_nav_txt}>はじめに</span>
               <span className={styles.global_nav_subtxt}>Introduction</span>
             </Link>
           </li>
           <li className={styles.li}>
-            <Link href="/output">
+            <Link href="/Output">
               <span className={styles.global_nav_txt}>アウトプット</span>
               <span className={styles.global_nav_subtxt}>Output</span>
             </Link>
           </li>
 
           <li className={styles.li}>
-            <Link href="/contact">
+            <Link href="/Reference">
               <span className={styles.global_nav_txt}>その他のブログ</span>
               <span className={styles.global_nav_subtxt}>Reference</span>
             </Link>
           </li>
           <li className={styles.li}>
-            <Link href="/aboutus">
+            <Link href="/Aboutus">
               <span className={styles.global_nav_txt}>運営者について</span>
               <span className={styles.global_nav_subtxt}>About us</span>
             </Link>
           </li>
           <li className={styles.li}>
-            <Link href="/contact">
+            <Link href="/Contact">
               <span className={styles.global_nav_txt}>お問い合わせ</span>
               <span className={styles.global_nav_subtxt}>Contact</span>
             </Link>

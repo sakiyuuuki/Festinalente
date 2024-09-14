@@ -1,3 +1,4 @@
+/*----LP section -------------------------------*/
 .LP {
   position: relative; /*親要素に設定すると、この親要素に対してposition:absoluteを設定した要素の位置を指定できます*/
   background-color: rgba(0, 0, 0, 0.4);
@@ -28,7 +29,7 @@
   font-weight: 400;
 }
 .LP_description {
-  font-size: 1.875rem;
+  font-size: 1.875rem; /*30px*/
   font-weight: 400;
   margin-bottom: 40px;
 }
@@ -50,3 +51,88 @@
 .moreinfo:hover {
   background: #b98a6e;
 }
+/*---Main section -------------------------------*/
+main section:not(.LP) {
+  margin-top: 100px; /*MainタグのSectionタグを100pxずつ間隔を開ける*/
+}
+
+.main_sections_title {
+  font-size: 2.2rem;
+  margin-bottom: 15px;
+  font-weight: 400;
+}
+
+.main_section_container {
+  max-width: 980px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.hr {
+  border: solid 2px #2cb67d;
+  margin-bottom: 16px;
+  width: 48px;
+}
+
+/*------Introduction section -------------------------------*/
+
+.Intro_description {
+  font-size: 1.55rem;
+  line-height: 2.8rem;
+  letter-spacing: 0.14em;
+}
+
+/*-------Output section -------------------------------*/
+.Output_article {
+  margin-bottom: 45px;
+  background-color: rgb(241, 240, 240);
+  padding-top: 15px;
+  padding-bottom: 45px;
+}
+
+.Output_section_container {
+  max-width: 980px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.Output_category {
+  text-align: center;
+  padding-top: 15px;
+  padding-bottom: 20px;
+  font-size: 1.5rem;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.col {
+  background-color: #ffffff;
+  width: 32%;
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+.category_title {
+  font-size: 1.55rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.Output_description {
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+
+.icon {
+  display: block;
+  min-width: 45px;
+  height: 45px;
+  align-items: center;
+  text-align: left;
+}
+
+/*-------News section -------------------------------*/

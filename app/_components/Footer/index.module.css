@@ -1,0 +1,37 @@
+.footer {
+  padding: 16px 24px;
+  text-align: center;
+  color: #fff;
+  font-size: 0.8rem;
+  margin-top: 80px;
+  background-color: black;
+}
+
+.nav {
+  margin-bottom: 16px;
+}
+
+.items {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  font-size: 1rem;
+  white-space: nowrap;
+}
+
+.copyright {
+  color: white;
+  font-size: 1rem;
+  margin-top: 15px;
+}
+
+@media (max-width: 640px) {
+  .items {
+    flex-wrap: wrap;
+    gap: 8px 0;
+  }
+
+  .item {
+    width: 50%;
+  }
+}

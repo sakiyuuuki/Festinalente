@@ -9,7 +9,7 @@ export default function Menu() {
       <nav className={styles.nav}>
         <ul className={styles.global_nav_lists}>
           <li className={styles.li}>
-            <Link href="/home">
+            <Link href="/">
               <span className={styles.global_nav_txt}>ホーム</span>
               <span className={styles.global_nav_subtxt}>Home</span>
             </Link>

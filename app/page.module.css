@@ -62,7 +62,7 @@ main section:not(.LP) {
   font-weight: 400;
 }
 
-.main_section_container {
+.Introduction_container {
   max-width: 980px;
   width: 90%;
   margin: 0 auto;
@@ -83,10 +83,8 @@ main section:not(.LP) {
 }
 
 /*-------Output section -------------------------------*/
-.Output_article {
-  margin-bottom: 45px;
+.Output_container {
   background-color: rgb(241, 240, 240);
-  padding-top: 15px;
   padding-bottom: 45px;
 }
 
@@ -98,8 +96,8 @@ main section:not(.LP) {
 
 .Output_category {
   text-align: center;
-  padding-top: 15px;
-  padding-bottom: 20px;
+  padding-top: 10px;
+  padding-bottom: 15px;
   font-size: 1.5rem;
 }
 
@@ -135,4 +133,47 @@ main section:not(.LP) {
   text-align: left;
 }
 
+/*-------About us section -------------------------------*/
+.Aboutus_container {
+  max-width: 960px;
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.Aboutus_description_container {
+  max-width: 500px;
+}
+
+.Aboutus_description {
+  font-size: 1.25rem;
+  line-height: 2.2rem;
+}
+.Aboutme_moreinfo {
+  padding-top: 10px;
+  text-decoration: underline;
+}
+
 /*-------News section -------------------------------*/
+.news_section {
+  position: relative;
+  background-color: #fff;
+  width: 840px;
+  margin: 0 auto;
+  padding: 0 24px 40px;
+  border-radius: var(--border-radius);
+}
+
+.newsTitle {
+  font-size: 1.5rem;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.news_hr {
+  border: solid 2px #2cb67d;
+  margin: 0 auto 10px;
+  width: 60px;
+}

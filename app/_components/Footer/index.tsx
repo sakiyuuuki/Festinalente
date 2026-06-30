@@ -23,7 +23,7 @@ export default function Footer() {
           <span lang="en" className={styles.copyrightsub}>
             ©
           </span>
-          2024.Festina Lente
+          2024.Festina Lente.
         </p>
       </nav>
     </footer>

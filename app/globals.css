@@ -26,9 +26,6 @@
   --container: 1040px;
   --container-narrow: 760px;
   --radius: 8px;
-  /* Temporary aliases — remove when consumers migrate in a later phase */
-  --border-radius: var(--radius);
-  --color-border-light: var(--color-border);
 }
 
 * {

@@ -92,14 +92,21 @@ export default async function ArticlePage({ params, searchParams }: PageProps) {
           <div className={styles.meta}>
             <Date date={publishedDate} />
           </div>
-          <Image
-            className={styles.thumbnail}
-            src={article.thumbnail?.url ?? "/no-image.png"}
-            alt=""
-            width={article.thumbnail?.width ?? 1200}
-            height={article.thumbnail?.height ?? 630}
-            priority
-          />
+          {article.thumbnail ? (
+            <Image
+              className={styles.thumbnail}
+              src={article.thumbnail.url}
+              alt=""
+              width={article.thumbnail.width}
+              height={article.thumbnail.height}
+              priority
+            />
+          ) : (
+            <div
+              className={styles.thumbnailPlaceholder}
+              aria-hidden="true"
+            />
+          )}
         </header>
         <div className={styles.layout}>
           <div

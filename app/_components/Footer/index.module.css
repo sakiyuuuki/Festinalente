@@ -1,7 +1,7 @@
 .footer {
   padding: 16px 24px;
   text-align: center;
-  color: #fff;
+  color: var(--color-surface);
   font-size: 0.8rem;
   margin-top: 80px;
   background-color: black;
@@ -20,7 +20,7 @@
 }
 
 .copyright {
-  color: white;
+  color: var(--color-surface);
   font-size: 1rem;
   margin-top: 15px;
 }

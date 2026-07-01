@@ -28,12 +28,9 @@ export default function ArticleList({ articles }: Props) {
                   height={article.thumbnail.height}
                 />
               ) : (
-                <Image
-                  className={styles.image}
-                  src="/no-image.png"
-                  alt="No Image"
-                  width={1200}
-                  height={630}
+                <div
+                  className={`${styles.image} ${styles.placeholder}`}
+                  aria-hidden="true"
                 />
               )}
               <dl className={styles.content}>

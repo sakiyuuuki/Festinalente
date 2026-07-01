@@ -2,21 +2,27 @@
 .LP {
   position: relative; /*親要素に設定すると、この親要素に対してposition:absoluteを設定した要素の位置を指定できます*/
   background-color: rgba(0, 0, 0, 0.4);
-  color: #fff; /*LP要素内のテキストを白*/
+  color: var(--color-surface); /*LP要素内のテキストを白*/
   overflow: hidden; /*要素からはみ出すコンテンツを隠す。LP内の子要素がサイズを超えていたらはみ出した部分を非表示にする*/
-  padding: 180px 0; /*LP要素内の内側の余白を設定divタグを中心に余白を作っている*/
+  padding: 180px var(--space-3); /*LP要素内の内側の余白を設定divタグを中心に余白を作っている*/
   display: flex; /*フレックスボックスレイアウトを使って、子要素の配置や整列、サイズの制御を柔軟に行うため*/
   justify-content: center; /**/
   align-items: center;
   text-align: center; /*子要素を水平方向に中央寄せ 子要素一つずつにtext-alignを指定するとlinkタグが中央寄せされない*/
 }
 
+.LP > div {
+  position: relative;
+  z-index: 1;
+}
+
 .LP_background_img {
   position: absolute; /*親要素を基準に絶対は位置を意味する*/
-  top: -10; /*topが0なので親要素の上端にピッタリくっついては位置されます*/
+  top: 0; /*topが0なので親要素の上端にピッタリくっついては位置されます*/
   right: 0;
   width: 100%;
-  height: 600px;
+  max-width: 100%;
+  height: 100%;
   object-fit: cover;
   object-position: right;
   display: flex;
@@ -24,10 +30,12 @@
   justify-content: center;
   z-index: -1;
 }
+
 .LP_title {
   font-size: 4rem;
   font-weight: 400;
 }
+
 .LP_description {
   font-size: 1.875rem; /*30px*/
   font-weight: 400;
@@ -36,21 +44,21 @@
 
 .moreinfo {
   padding: 17px 30px; /*オレンジボタンの*/
-  background: #da9168;
+  background: var(--color-primary);
   border-radius: 30px;
-  color: rgb(0, 0, 0);
+  color: var(--color-surface);
   font-weight: 600;
   font-size: 1.0625rem;
   cursor: pointer;
-  transition: all 0.3s;
   text-decoration: none;
-  transition-duration: 0.2s;
+  transition: background-color 0.2s;
   justify-content: center;
 }
 
 .moreinfo:hover {
-  background: #b98a6e;
+  background: var(--color-primary-hover);
 }
+
 /*---Main section -------------------------------*/
 main section:not(.LP) {
   margin-top: 100px; /*MainタグのSectionタグを100pxずつ間隔を開ける*/
@@ -69,7 +77,7 @@ main section:not(.LP) {
 }
 
 .hr {
-  border: solid 2px #2cb67d;
+  border: solid 2px var(--color-primary);
   margin-bottom: 16px;
   width: 48px;
 }
@@ -84,7 +92,7 @@ main section:not(.LP) {
 
 /*-------Output section -------------------------------*/
 .Output_container {
-  background-color: rgb(241, 240, 240);
+  background-color: var(--color-bg-subtle);
   padding-bottom: 45px;
 }
 
@@ -102,14 +110,13 @@ main section:not(.LP) {
 }
 
 .row {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
 }
 
 .col {
-  background-color: #ffffff;
-  width: 32%;
+  background-color: var(--color-surface);
   padding: 20px;
   margin-bottom: 30px;
 }
@@ -142,6 +149,7 @@ main section:not(.LP) {
   justify-content: space-between;
   align-items: center;
 }
+
 .Aboutus_description_container {
   max-width: 500px;
 }
@@ -150,19 +158,26 @@ main section:not(.LP) {
   font-size: 1.25rem;
   line-height: 2.2rem;
 }
+
 .Aboutme_moreinfo {
   padding-top: 10px;
   text-decoration: underline;
 }
 
+.Aboutus_img {
+  max-width: 100%;
+  height: auto;
+}
+
 /*-------News section -------------------------------*/
 .news_section {
   position: relative;
-  background-color: #fff;
-  width: 840px;
+  background-color: var(--color-surface);
+  max-width: var(--container-narrow);
+  width: 100%;
   margin: 0 auto;
   padding: 0 24px 40px;
-  border-radius: var(--border-radius);
+  border-radius: var(--radius);
 }
 
 .newsTitle {
@@ -173,7 +188,69 @@ main section:not(.LP) {
 }
 
 .news_hr {
-  border: solid 2px #2cb67d;
+  border: solid 2px var(--color-primary);
   margin: 0 auto 10px;
   width: 60px;
+}
+
+@media (min-width: 640px) {
+  .row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .row {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .LP {
+    padding: 120px var(--space-3);
+  }
+
+  .LP_title {
+    font-size: var(--font-size-h1);
+  }
+
+  .LP_description {
+    font-size: var(--font-size-h3);
+  }
+
+  .Aboutus_container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-4);
+  }
+
+  .Aboutus_description_container {
+    max-width: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .LP {
+    padding: var(--space-7) var(--space-3);
+  }
+
+  .LP_title {
+    font-size: var(--font-size-h2);
+  }
+
+  .LP_description {
+    font-size: var(--font-size-body);
+    line-height: var(--line-height-heading);
+  }
+
+  .Intro_description {
+    font-size: var(--font-size-body);
+    line-height: var(--line-height-body);
+    letter-spacing: 0;
+  }
+
+  .Aboutus_description {
+    font-size: var(--font-size-body);
+    line-height: var(--line-height-body);
+  }
 }

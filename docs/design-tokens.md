@@ -30,8 +30,10 @@
 | 用途 | フォント |
 |------|----------|
 | 見出し・ロゴ | Zen Old Mincho（明朝） |
-| 本文・UI | Inter + Noto Sans JP（ゴシック） |
+| 本文・UI | Zen Old Mincho（明朝）※ 2026-07-01 改訂: 元デザインに合わせ全体を明朝に統一（旧: Inter + Noto Sans JP） |
 | コード | JetBrains Mono 等 monospace |
+
+> `--font-sans`（Inter + Noto Sans JP）はトークンとして残置。将来 UI 部分だけゴシックにしたくなった場合に再利用可能。
 
 ```
 /* type scale (16px 基準) */

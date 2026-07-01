@@ -46,7 +46,8 @@ html {
 }
 
 body {
-  font-family: var(--font-sans);
+  /* 元デザインに合わせてサイト全体を明朝体（Zen Old Mincho）に統一 */
+  font-family: var(--font-mincho), serif;
   font-size: var(--font-size-body);
   color: var(--color-text);
   background: var(--color-bg);

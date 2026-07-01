@@ -1,4 +1,4 @@
-import NewsList from "@/app/_components/NewsList";
+import ArticleList from "@/app/_components/ArticleList";
 import { getArticleList, getCategoryList } from "@/app/libs/microcms";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -58,7 +58,7 @@ export default async function CategoryPage({ params }: PageProps) {
         <p className={styles.description}>{category.description}</p>
       </header>
       <section className={styles.articleSection}>
-        <NewsList news={articles.contents} />
+        <ArticleList articles={articles.contents} />
       </section>
     </main>
   );

@@ -117,10 +117,15 @@ main section:not(.LP) {
   margin: 0 auto;
 }
 
+/* Output見出しの区切り線→Category は詰める(この箇所だけ base .hr の40pxを縮小) */
+.Output_section_container > .hr {
+  margin-bottom: var(--space-4);
+}
+
 .Output_category {
   text-align: center;
-  padding-top: 10px;
-  padding-bottom: 15px;
+  padding-top: 0;
+  padding-bottom: var(--space-4);
   font-size: 1.5rem;
 }
 
@@ -130,10 +135,10 @@ main section:not(.LP) {
   gap: var(--space-4);
 }
 
+/* margin-bottom は撤去。段間・列間をグリッドの gap(24px) に一本化して均等に */
 .col {
   background-color: var(--color-surface);
   padding: 20px;
-  margin-bottom: 30px;
 }
 
 .category_title {

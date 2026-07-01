@@ -37,6 +37,7 @@
   font-weight: 700;
   display: inline-block;
   padding-top: 6px;
+  line-height: 1; /* body の line-height:1.9 継承による JP/EN 間の余白を詰める */
 }
 
 .global_nav_subtxt {

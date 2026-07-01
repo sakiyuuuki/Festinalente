@@ -18,7 +18,7 @@ export async function GET(request: NextRequest) {
     );
   }
 
-  draftMode().enable();
+  (await draftMode()).enable();
 
   const redirectUrl = new URL(`/articles/${id}`, request.url);
   redirectUrl.searchParams.set("draftKey", draftKey);

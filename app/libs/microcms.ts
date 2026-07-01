@@ -39,8 +39,18 @@ const client = createClient({
   apiKey: process.env.MICROCMS_API_KEY,
 });
 
-const articlesCache = { next: { tags: ["articles"] } };
-const categoriesCache = { next: { tags: ["categories"] } };
+// Next 15+ は fetch の既定が no-store のため、SSG/ISR を維持するには明示的に force-cache する。
+// タグ付けと併用し、revalidateTag(tag, {expire:0}) でオンデマンド失効させる（ADR-0003）。
+const articlesCache = {
+  cache: "force-cache" as RequestCache,
+  next: { tags: ["articles"] },
+};
+const categoriesCache = {
+  cache: "force-cache" as RequestCache,
+  next: { tags: ["categories"] },
+};
+// 下書きプレビューは常に最新を取得するためキャッシュしない。
+const draftCache = { cache: "no-store" as RequestCache };
 
 //Articlelistを取得するscript
 export const getArticleList = async (queries?: MicroCMSQueries) => {
@@ -56,11 +66,13 @@ export const getArticleDetail = async (
   contentId: string,
   queries?: MicroCMSQueries
 ) => {
+  // draftKey 付き（下書きプレビュー）は最新を取得するためキャッシュしない。
+  const isDraft = Boolean(queries?.draftKey);
   const detailData = await client.getListDetail<Article>({
     endpoint: "articles",
     contentId,
     queries,
-    customRequestInit: articlesCache,
+    customRequestInit: isDraft ? draftCache : articlesCache,
   });
   return detailData;
 };

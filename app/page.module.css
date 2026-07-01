@@ -60,8 +60,13 @@
 }
 
 /*---Main section -------------------------------*/
-main section:not(.LP) {
-  /* セクション間マージン: 96px(desktop)〜56px(mobile)。8pxスケールに統一 */
+/* セクション間マージン: 96px(desktop)〜56px(mobile)。8pxスケールに統一 */
+/* Turbopack(CSS Modules)は要素のみのセレクタを許可しないため、対象セクションのクラスを列挙する。
+   .LP は <main> の外にあるため元々この規則の対象外(旧 :not(.LP) は冗長だった)。 */
+.Introduction_container,
+.Output_container,
+.Aboutus_container,
+.news_section {
   margin-top: clamp(3.5rem, 9vw, 6rem);
 }
 

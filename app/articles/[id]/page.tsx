@@ -11,13 +11,13 @@ import Image from "next/image";
 import styles from "./page.module.css";
 
 type PageProps = {
-  params: {
+  params: Promise<{
     id: string;
-  };
-  searchParams?: {
+  }>;
+  searchParams?: Promise<{
     dk?: string | string[];
     draftKey?: string | string[];
-  };
+  }>;
 };
 
 const STATIC_ARTICLE_LIMIT = 100;
@@ -33,7 +33,8 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
-  const article = await fetchArticle(params.id);
+  const { id } = await params;
+  const article = await fetchArticle(id);
 
   if (!article) {
     notFound();
@@ -64,15 +65,17 @@ export async function generateMetadata({
 }
 
 export default async function ArticlePage({ params, searchParams }: PageProps) {
-  const isDraftMode = draftMode().isEnabled;
-  const draftKey = getDraftKey(searchParams);
+  const { id } = await params;
+  const resolvedSearchParams = await searchParams;
+  const isDraftMode = (await draftMode()).isEnabled;
+  const draftKey = getDraftKey(resolvedSearchParams);
 
   if (isDraftMode) {
     noStore();
   }
 
   const article = await fetchArticle(
-    params.id,
+    id,
     isDraftMode && draftKey ? { draftKey } : undefined
   );
 
@@ -150,7 +153,7 @@ async function getAllStaticArticles() {
   return articles;
 }
 
-function getDraftKey(searchParams: PageProps["searchParams"]) {
+function getDraftKey(searchParams: Awaited<PageProps["searchParams"]>) {
   const draftKey = searchParams?.draftKey ?? searchParams?.dk;
 
   if (Array.isArray(draftKey)) {

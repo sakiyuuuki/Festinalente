@@ -5,9 +5,9 @@ import { notFound } from "next/navigation";
 import styles from "../page.module.css";
 
 type PageProps = {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 };
 
 const STATIC_CATEGORY_LIMIT = 100;
@@ -23,7 +23,8 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
-  const category = await getCategoryBySlug(params.slug);
+  const { slug } = await params;
+  const category = await getCategoryBySlug(slug);
 
   if (!category) {
     notFound();
@@ -40,7 +41,8 @@ export async function generateMetadata({
 }
 
 export default async function CategoryPage({ params }: PageProps) {
-  const category = await getCategoryBySlug(params.slug);
+  const { slug } = await params;
+  const category = await getCategoryBySlug(slug);
 
   if (!category) {
     notFound();

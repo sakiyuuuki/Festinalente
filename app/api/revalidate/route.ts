@@ -11,8 +11,9 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ message: "Invalid secret" }, { status: 401 });
   }
 
-  revalidateTag("articles");
-  revalidateTag("categories");
+  // Next 16 で第2引数が必須化。Webhook からの即時反映のため expire:0(即時失効)を指定する。
+  revalidateTag("articles", { expire: 0 });
+  revalidateTag("categories", { expire: 0 });
 
   return NextResponse.json({ revalidated: true });
 }

@@ -1,7 +1,11 @@
 import styles from "./page.module.css";
 import Link from "next/link";
 import Image from "next/image";
-import { getArticleList, getCategoryList } from "@/app/libs/microcms";
+import {
+  getArticleList,
+  getCategoryList,
+  sortCategories,
+} from "@/app/libs/microcms";
 import { renderIcon } from "@/app/libs/categoryIcons";
 import { TOP_ARTICLES_LIMIT } from "./constants";
 import ArticleList from "@/app/_components/ArticleList";
@@ -13,7 +17,6 @@ export default async function Home() {
     }),
     getCategoryList({
       limit: 100,
-      orders: "createdAt",
     }),
   ]);
 
@@ -56,7 +59,7 @@ export default async function Home() {
             <h3 className={styles.Output_category}>Category</h3>
 
             <div className={styles.row}>
-              {categories.contents.map((category) => (
+              {sortCategories(categories.contents).map((category) => (
                 <div className={styles.col} key={category.id}>
                   <Link href={`/categories/${category.slug}`}>
                     <span className={styles.icon}>

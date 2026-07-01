@@ -1,4 +1,4 @@
-import { getCategoryList } from "@/app/libs/microcms";
+import { getCategoryList, sortCategories } from "@/app/libs/microcms";
 import { renderIcon } from "@/app/libs/categoryIcons";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -18,7 +18,6 @@ export function generateMetadata(): Metadata {
 export default async function CategoriesPage() {
   const data = await getCategoryList({
     limit: 100,
-    orders: "createdAt",
   });
 
   return (
@@ -30,7 +29,7 @@ export default async function CategoriesPage() {
         </p>
       </header>
       <ul className={styles.grid}>
-        {data.contents.map((category) => (
+        {sortCategories(data.contents).map((category) => (
           <li key={category.id}>
             <Link
               className={styles.card}

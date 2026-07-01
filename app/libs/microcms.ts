@@ -86,3 +86,22 @@ export const getCategoryDetail = async (
   });
   return detailData;
 };
+
+// microCMS は orders 未指定時の並び順を保証しないため、Output の表示順はコードで固定する。
+// 新カテゴリを追加した場合はこの配列に slug を追記する（未掲載は末尾に回る）。
+export const CATEGORY_SLUG_ORDER = [
+  "html-css-js",
+  "sql",
+  "python",
+  "machine-learning",
+  "statistics",
+  "business",
+];
+
+export function sortCategories<T extends { slug: string }>(categories: T[]): T[] {
+  const rank = (slug: string) => {
+    const index = CATEGORY_SLUG_ORDER.indexOf(slug);
+    return index === -1 ? Number.MAX_SAFE_INTEGER : index;
+  };
+  return [...categories].sort((a, b) => rank(a.slug) - rank(b.slug));
+}

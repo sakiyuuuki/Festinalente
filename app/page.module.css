@@ -97,10 +97,18 @@ main section:not(.LP) {
 }
 
 /*-------Output section -------------------------------*/
-.Output_container {
+/* :not(.LP) は generic な `main section:not(.LP)` (margin-top) を上書きするための詳細度確保 */
+.Output_container:not(.LP) {
   background-color: var(--color-bg-subtle);
   /* 色付き全幅ブロックは上下対称の内側パディングで額縁を作る: 64px(desktop)〜40px(mobile) */
   padding: clamp(2.5rem, 8vw, 4rem) 0;
+  /* 外側マージンを内側パディング分だけ相殺し、色帯前後のギャップを他セクションと同じ(96/56px)に揃える */
+  margin-top: calc(clamp(3.5rem, 9vw, 6rem) - clamp(2.5rem, 8vw, 4rem));
+}
+
+/* 色帯の直後のセクション(About us)も同じく相殺し、下側ギャップも揃える */
+.Output_container + section:not(.LP) {
+  margin-top: calc(clamp(3.5rem, 9vw, 6rem) - clamp(2.5rem, 8vw, 4rem));
 }
 
 .Output_section_container {

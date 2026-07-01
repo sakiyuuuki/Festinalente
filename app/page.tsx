@@ -6,7 +6,7 @@ import {
   getCategoryList,
   sortCategories,
 } from "@/app/libs/microcms";
-import { renderIcon } from "@/app/libs/categoryIcons";
+import { renderIcons } from "@/app/libs/categoryIcons";
 import { TOP_ARTICLES_LIMIT } from "./constants";
 import ArticleList from "@/app/_components/ArticleList";
 
@@ -63,7 +63,7 @@ export default async function Home() {
                 <div className={styles.col} key={category.id}>
                   <Link href={`/categories/${category.slug}`}>
                     <span className={styles.icon}>
-                      {renderIcon(category.icon, {
+                      {renderIcons(category.icon, {
                         "aria-hidden": true,
                         size: 30,
                       })}

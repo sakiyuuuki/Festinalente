@@ -40,3 +40,22 @@ export function renderIcon(identifier: string, props?: IconProps) {
     </span>
   );
 }
+
+// icon フィールドはカンマ/空白区切りで複数指定できる（例: "FaHtml5, FaCss3Alt, IoLogoJavascript"）。
+// 各識別子を個別のアイコンとして並べて描画する。
+export function renderIcons(identifiers: string | null | undefined, props?: IconProps) {
+  const names = (identifiers ?? "")
+    .split(/[,\s]+/)
+    .map((name) => name.trim())
+    .filter(Boolean);
+
+  if (names.length === 0) {
+    return renderIcon("", props);
+  }
+
+  return names.map((name, index) => (
+    <span key={`${name}-${index}`} style={{ display: "inline-flex" }}>
+      {renderIcon(name, props)}
+    </span>
+  ));
+}

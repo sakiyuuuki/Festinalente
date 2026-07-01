@@ -1,5 +1,5 @@
 import { getCategoryList, sortCategories } from "@/app/libs/microcms";
-import { renderIcon } from "@/app/libs/categoryIcons";
+import { renderIcons } from "@/app/libs/categoryIcons";
 import type { Metadata } from "next";
 import Link from "next/link";
 import styles from "./page.module.css";
@@ -36,7 +36,7 @@ export default async function CategoriesPage() {
               href={`/categories/${category.slug}`}
             >
               <span className={styles.icon}>
-                {renderIcon(category.icon, {
+                {renderIcons(category.icon, {
                   "aria-hidden": true,
                   size: 32,
                 })}

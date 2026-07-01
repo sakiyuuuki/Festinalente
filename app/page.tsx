@@ -1,8 +1,8 @@
 import styles from "./page.module.css";
 import Link from "next/link";
 import Image from "next/image";
-import { getNewsList } from "@/app/libs/microcms";
-import { TOP_NEWS_LIMIT } from "./constants";
+import { getArticleList } from "@/app/libs/microcms";
+import { TOP_ARTICLES_LIMIT } from "./constants";
 import NewsList from "@/app/_components/NewsList";
 import { FaHtml5 } from "react-icons/fa";
 import { FaCss3Alt } from "react-icons/fa";
@@ -13,8 +13,8 @@ import { IoSettings } from "react-icons/io5";
 import { GoGraph } from "react-icons/go";
 import { IoBusiness } from "react-icons/io5";
 export default async function Home() {
-  const data = await getNewsList({
-    limit: TOP_NEWS_LIMIT,
+  const data = await getArticleList({
+    limit: TOP_ARTICLES_LIMIT,
   });
   return (
     <>

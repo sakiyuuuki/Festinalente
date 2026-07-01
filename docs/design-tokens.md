@@ -5,11 +5,18 @@
 
 ## カラー
 
+> [ADR-0005](./adr/0005-revert-to-original-font-and-palette.md) により、当初のインディゴ刷新（ADR-0004）を撤回し、
+> **元の緑＋テラコッタ**の配色を正式トークンとして採用する。
+
 ```
-/* Primary (indigo) */
---color-primary:        #4f46e5;  /* リンク・アクセント・見出し下線 */
---color-primary-hover:  #4338ca;  /* hover */
---color-primary-weak:   #eef2ff;  /* タグ背景・淡いハイライト */
+/* Primary (green) — リンク・アクセント・区切り線・タグ */
+--color-primary:        #2cb67d;
+--color-primary-hover:  #22946a;
+--color-primary-weak:   #e7f6ef;  /* タグ背景・淡いハイライト */
+
+/* CTA (terracotta) — 主要ボタン(moreinfo 等)のみ */
+--color-cta:            #da9168;
+--color-cta-hover:      #b98a6e;
 
 /* Neutral (grayscale) */
 --color-text:           #1f2328;  /* 本文 */
@@ -21,19 +28,17 @@
 --color-code-bg:        #0f172a;  /* コードブロック背景（ダーク） */
 ```
 
-旧来の緑 `#2cb67d`・テラコッタ `#da9168` は退け、上記へ移行する。
-
 ## タイポグラフィ
+
+> [ADR-0005](./adr/0005-revert-to-original-font-and-palette.md) により、明朝見出し×ゴシック本文（ADR-0004）を撤回し、
+> **元どおりサイト全体を明朝**に戻す。
 
 すべて `next/font` でホスト。
 
 | 用途 | フォント |
 |------|----------|
-| 見出し・ロゴ | Zen Old Mincho（明朝） |
-| 本文・UI | Zen Old Mincho（明朝）※ 2026-07-01 改訂: 元デザインに合わせ全体を明朝に統一（旧: Inter + Noto Sans JP） |
+| 見出し・ロゴ・**本文/UI** | Zen Old Mincho（明朝）＝サイト全体 |
 | コード | JetBrains Mono 等 monospace |
-
-> `--font-sans`（Inter + Noto Sans JP）はトークンとして残置。将来 UI 部分だけゴシックにしたくなった場合に再利用可能。
 
 ```
 /* type scale (16px 基準) */

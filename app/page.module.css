@@ -43,10 +43,10 @@
 }
 
 .moreinfo {
-  padding: 17px 30px; /*オレンジボタンの*/
-  background: var(--color-primary);
+  padding: 17px 30px; /*テラコッタCTAボタン*/
+  background: var(--color-cta);
   border-radius: 30px;
-  color: var(--color-surface);
+  color: #000;
   font-weight: 600;
   font-size: 1.0625rem;
   cursor: pointer;
@@ -56,7 +56,7 @@
 }
 
 .moreinfo:hover {
-  background: var(--color-primary-hover);
+  background: var(--color-cta-hover);
 }
 
 /*---Main section -------------------------------*/

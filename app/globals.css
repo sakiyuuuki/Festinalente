@@ -1,7 +1,9 @@
 :root {
-  --color-primary: #4f46e5;
-  --color-primary-hover: #4338ca;
-  --color-primary-weak: #eef2ff;
+  --color-primary: #2cb67d;
+  --color-primary-hover: #22946a;
+  --color-primary-weak: #e7f6ef;
+  --color-cta: #da9168;
+  --color-cta-hover: #b98a6e;
   --color-text: #1f2328;
   --color-text-muted: #5c6470;
   --color-border: #e5e7eb;
